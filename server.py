@@ -9,11 +9,19 @@ def greeting():
 
 @app.route("/calculator/add", methods=['POST'])
 def add(first, second):
-    return first+second
-
+    data = request.get_json()  # Assuming JSON data in the request
+    first = data.get('first')
+    second = data.get('second')
+    result = first + second
+    return result
+    
 @app.route("/calculator/subtract", methods=['POST'])
 def subtract(first, second):
-    return first-second
+    data = request.get_json()  # Assuming JSON data in the request
+    first = data.get('first')
+    second = data.get('second')
+    result = first - second
+    return result
 
 if __name__ == '__main__':
     app.run(port=8080,host='0.0.0.0')
